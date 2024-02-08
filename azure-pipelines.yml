@@ -13,7 +13,7 @@ steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'ARMPipeline-conn'
+    azureResourceManagerConnection: 'PAT_MasteringLinuxPipeline'
     subscriptionId: '36a7d4b6-e14b-4e56-93b6-f04b550d58f6'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'rgMasteringLinux'
