@@ -4,22 +4,24 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- task: AzureResourceManagerTemplateDeployment@3
-  inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'ServicePrincipalHotmail'
-    subscriptionId: '36a7d4b6-e14b-4e56-93b6-f04b550d58f6'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'rgMasteringLinux'
-    location: 'North Europe'
-    templateLocation: 'Linked artifact'
-    csmFileLink: '$(System.DefaultWorkingDirectory)/Template/azuredeploy.json'
-    csmParametersFileLink: '$(System.DefaultWorkingDirectory)/Template/parameters.json'
-    deploymentMode: 'Incremental'
-    deploymentName: 'DeployPipelineTemplate'
+  - main
+  
+  pool:
+    vmImage: ubuntu-latest
+  
+  steps:
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: 'ServicePrincipalHotmail'
+      subscriptionId: '36a7d4b6-e14b-4e56-93b6-f04b550d58f6'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rgMasteringLinux'
+      location: 'North Europe'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(System.DefaultWorkingDirectory)/Template/azuredeploy.json'
+      csmParametersFile: '$(System.DefaultWorkingDirectory)/Template/parameters.json'
+      deploymentMode: 'Incremental'
+      deploymentName: 'DeployPipelineTemplate'
+  
+  - script: echo "csmFile value $(System.DefaultWorkingDirectory)/Template/azuredeploy.json"  
