@@ -3,25 +3,29 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
-      "value": "northeurope"
+      "value": "[resourceGroup().location]"
     },
-    "networkInterfaceName": {
-      "value": "vmfreshcentos831"
+    "virtualMachineRG": {
+      "value": "[resourceGroup().name]"
+    },
+    "networkInterfaceName1": {
+      "value": "vmcentosfresh64_z1"
+    },
+    "enableAcceleratedNetworking": {
+      "value": true
     },
     "networkSecurityGroupName": {
-      "value": "vmFreshCentOS-nsg"
+      "value": "vmCentOsFresh-nsg"
     },
     "networkSecurityGroupRules": {
       "value": [
         {
           "name": "SSH",
           "properties": {
-            "priority": 1010,
+            "priority": 300,
             "protocol": "TCP",
             "access": "Allow",
             "direction": "Inbound",
-            "sourceApplicationSecurityGroups": [],
-            "destinationApplicationSecurityGroups": [],
             "sourceAddressPrefix": "*",
             "sourcePortRange": "*",
             "destinationAddressPrefix": "*",
@@ -34,7 +38,7 @@
       "value": "default"
     },
     "virtualNetworkName": {
-      "value": "vmFreshCentOS-vnet"
+      "value": "vmCentOsFresh-vnet"
     },
     "addressPrefixes": {
       "value": ["10.0.0.0/16"]
@@ -49,8 +53,8 @@
         }
       ]
     },
-    "publicIpAddressName": {
-      "value": "vmFreshCentOS-ip"
+    "publicIpAddressName1": {
+      "value": "vmCentOsFresh-ip"
     },
     "publicIpAddressType": {
       "value": "Static"
@@ -59,16 +63,16 @@
       "value": "Standard"
     },
     "pipDeleteOption": {
-      "value": "Delete"
+      "value": "Detach"
     },
     "virtualMachineName": {
-      "value": "vmFreshCentOS"
+      "value": "vmCentOsFresh"
     },
-    "virtualMachineComputerName": {
-      "value": "vmFreshCentOS"
+    "virtualMachineName1": {
+      "value": "vmCentOsFresh"
     },
-    "virtualMachineRG": {
-      "value": "rgMasteringLinux"
+    "virtualMachineComputerName1": {
+      "value": "vmCentOsFresh"
     },
     "osDiskType": {
       "value": "Premium_LRS"
@@ -80,16 +84,19 @@
       "value": "Standard_F4s_v2"
     },
     "nicDeleteOption": {
-      "value": "Delete"
+      "value": "Detach"
     },
     "hibernationEnabled": {
       "value": false
     },
     "adminUsername": {
-      "value": "Silva"
+      "value": "PedroSilva"
     },
     "adminPassword": {
-      "value": "Teste123!"
+      "value": null
+    },
+    "virtualMachine1Zone": {
+      "value": "1"
     }
   }
 }
