@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
-      "value": ""
+      "value": "[parameters('location')]"
     },
     "networkInterfaceName1": {
       "value": "vmcentosfresh64_z1"
@@ -90,7 +90,7 @@
       "value": "PedroSilva"
     },
     "adminPassword": {
-      "value": ""
+      "value": "[parameters('adminPassword')]"
     },
     "virtualMachine1Zone": {
       "value": "1"
