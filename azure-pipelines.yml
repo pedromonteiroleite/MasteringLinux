@@ -39,8 +39,8 @@ steps:
       resourceGroupName: $(resourceGroupName)
       location: $(location)
       templateLocation: "URL of the file"
-      csmFileLink: "https://github.com/pedromonteiroleite/MasteringLinux/blob/main/Templates/vmCentOsFresh/template.json"
-      csmParametersFileLink: "https://github.com/pedromonteiroleite/MasteringLinux/blob/main/Templates/vmCentOsFresh/parameters.json"
+      csmFileLink: "https://raw.githubusercontent.com/pedromonteiroleite/MasteringLinux/main/Templates/vmCentOsFresh/template.json"
+      csmParametersFileLink: "https://raw.githubusercontent.com/pedromonteiroleite/MasteringLinux/main/Templates/vmCentOsFresh/parameters.json"
       deploymentMode: "Incremental"
       deploymentName: "DeployPipelineTemplate"
       overrideParameters: "-resourceGroupName $(resourceGroupName) -location $(location) -adminPassword $(adminPassword)"
