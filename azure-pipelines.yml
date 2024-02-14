@@ -9,7 +9,7 @@ variables:
   - name: resourceGroupName
     value: "rgMasteringLinux"
   - name: location
-    value: "North Europe"
+    value: "northeurope"
 
 steps:
   - task: AzureCLI@2
