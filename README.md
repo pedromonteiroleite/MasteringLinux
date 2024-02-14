@@ -1,8 +1,4 @@
-# Mastering Linux
-
-## Deploy vm to use on labs
-
-### Files
+## Linux VM (to be used in labs)
 
 - Templates
   - azure-pipelines.yml
