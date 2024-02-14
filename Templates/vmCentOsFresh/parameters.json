@@ -5,9 +5,6 @@
     "location": {
       "value": "$(location)"
     },
-    "virtualMachineRG": {
-      "value": "$(resourceGroupName)"
-    },
     "networkInterfaceName1": {
       "value": "vmcentosfresh64_z1"
     },

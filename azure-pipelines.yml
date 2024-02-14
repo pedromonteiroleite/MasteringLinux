@@ -12,6 +12,14 @@ variables:
     value: "northeurope"
 
 steps:
+  - script: echo $(adminPassword)
+
+  - script: echo $(resourceGroupName)
+
+  - script: echo $(location)
+
+  - script: echo "begin cli"
+
   - task: AzureCLI@2
     inputs:
       azureSubscription: "ServicePrincipalHotmail"
@@ -19,6 +27,8 @@ steps:
       scriptLocation: "inlineScript"
       inlineScript: |
         az group create --name $(resourceGroupName) --location "$(location)"
+
+  - script: echo "begin template"
 
   - task: AzureResourceManagerTemplateDeployment@3
     inputs:
