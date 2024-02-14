@@ -43,4 +43,4 @@ steps:
       csmParametersFileLink: "https://github.com/pedromonteiroleite/MasteringLinux/blob/main/Templates/vmCentOsFresh/parameters.json"
       deploymentMode: "Incremental"
       deploymentName: "DeployPipelineTemplate"
-      overrideParameters: '-resourceGroupName $(resourceGroupName) -location "$(location)"'
+      overrideParameters: "-resourceGroupName $(resourceGroupName) -location $(location) -adminPassword $(adminPassword)"
