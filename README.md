@@ -6,15 +6,11 @@
     - parameters.json
     - template.json
 
-[Plan your Linux environment in Azure](https://learn.microsoft.com/en-us/training/modules/plan-your-linux-environment-in-azure/)
-
-### Image
-
-- CentOS 8
-  - [image](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=CentOS%208%20from%20OpenLogic%20by%20Perforce&page=1)
-
 ### References
 
+- [Plan your Linux environment in Azure](https://learn.microsoft.com/en-us/training/modules/plan-your-linux-environment-in-azure/)
+- CentOS 8
+  - [image](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=CentOS%208%20from%20OpenLogic%20by%20Perforce&page=1)
 - Create GitHub project repository that will be the repo for the IAC files used by the pipeline.
 - Create Azure Devops project.
 - Create a Service connection.
