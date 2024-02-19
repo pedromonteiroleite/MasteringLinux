@@ -1,4 +1,4 @@
-## Linux VM (to be used in labs)
+## Linux VM (labs)
 
 - azure-pipelines.yml
 - Templates
