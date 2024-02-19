@@ -16,13 +16,10 @@ variables:
     value: "northeurope"
 
 steps:
-  - script: echo $(adminPassword)
-
-  - script: echo $(resourceGroupName)
-
-  - script: echo $(location)
-
-  - script: echo "begin cli"
+  - script: |
+      echo $(adminPassword)
+      echo $(resourceGroupName)
+      echo $(location)
 
   - task: AzureCLI@2
     inputs:
@@ -31,8 +28,6 @@ steps:
       scriptLocation: "inlineScript"
       inlineScript: |
         az group create --name $(resourceGroupName) --location "$(location)"
-
-  - script: echo "begin template"
 
   - task: AzureResourceManagerTemplateDeployment@3
     inputs:
@@ -48,3 +43,24 @@ steps:
       deploymentMode: "Incremental"
       deploymentName: "DeployPipelineTemplate"
       overrideParameters: "-location $(location) -adminPassword $(adminPassword)"
+
+  - task: Docker@2
+    displayName: "Build and Push Docker Image"
+    inputs:
+      containerRegistry: "MyACR" # Replace 'MyACR' with the name of your Azure Container Registry
+      repository: "myapp" # Replace 'myapp' with the name of your container image repository
+      command: "buildAndPush"
+      Dockerfile: "**/Dockerfile" # Path to your Dockerfile, adjust as needed
+      tags: |
+        $(Build.BuildId)
+      arguments: "-t $(dockerRegistryServiceConnection)"
+
+  - script: |
+      az acr task create \
+        --registry MyACR \
+        --name buildtask \
+        --image myapp:$(Build.BuildId) \
+        --file ./path/to/Dockerfile \
+        --context . \
+        --git-access-token $(System.AccessToken)
+    displayName: "Create ACR Build Task"
