@@ -1,7 +1,6 @@
-## Linux VM (labs)
+## Linux VM
 
-- azure-pipelines.yml
-- Templates
-  - vmCentOsFresh
-    - parameters.json
-    - template.json
+- CentOS
+- ARM
+- Azure Pipeline
+- SSH
