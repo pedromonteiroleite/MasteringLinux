@@ -4,11 +4,11 @@
 - Upload publish folder to VM
 - Create DockerFile
 
-         FROM mcr.microsoft.com/dotnet/sdk:6.0
-         WORKDIR /app
-         COPY . .
-         EXPOSE 80
-         ENTRYPOINT ["dotnet", "WebAPI.dll"]
+      FROM mcr.microsoft.com/dotnet/aspnet:6.0
+      WORKDIR /app
+      COPY . .
+      EXPOSE 80
+      ENTRYPOINT ["dotnet", "WebAPI.dll"]
 
 - Add the inbound port 80 rule to VM if not yet added.
 - Upload Dockerfile to publish folder (WinSCP)

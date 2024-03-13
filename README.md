@@ -2,5 +2,5 @@
 
 - CentOS
 - ARM
-- Azure Pipeline
-- SSH
+- Azure Pipelines
+- Docker
