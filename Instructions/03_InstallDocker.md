@@ -1,8 +1,9 @@
 ## Install Docker
 
 - SSH Connect
-- Follow docker instalation to CentOS using docker repository - https://docs.docker.com/engine/install/centos/
-- Check instalation
+- [Follow Docker instalation to CentOS using docker repository](https://docs.docker.com/engine/install/centos/)
+
+- Verify instalation
 
        $ sudo docker version
 
@@ -15,7 +16,7 @@
 
 - Access VM on Azure portal, in the network tab add a inbound rule for http on port 80.
 
-## Install Nginx
+## Install Nginx (test)
 
        $ sudo docker run --name appnginx -p 80:80 -d nginx
 
