@@ -9,7 +9,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  - group: MasteringLinuxDev # Link to the variable group "MasteringLinuxDev"
+  - group: MasteringLinuxDev
   - name: resourceGroupName
     value: "rgMasteringLinux"
   - name: location
@@ -25,6 +25,7 @@ steps:
       echo $(location)
 
   - task: AzureCLI@2
+    displayName: "Create Resource Group"
     inputs:
       azureSubscription: "ServicePrincipalHotmail"
       scriptType: "bash"
@@ -33,6 +34,7 @@ steps:
         az group create --name $(resourceGroupName) --location "$(location)"
 
   - task: AzureResourceManagerTemplateDeployment@3
+    displayName: "Deploy ARM Template"
     inputs:
       deploymentScope: "Resource Group"
       azureResourceManagerConnection: "ServicePrincipalHotmail"
@@ -50,6 +52,7 @@ steps:
         -virtualMachineName  $(virtualMachineName)"
 
   - task: AzureCLI@2
+    displayName: "Open Inbound Rule on Port 80"
     inputs:
       azureSubscription: "ServicePrincipalHotmail"
       scriptType: "bash"
@@ -69,6 +72,7 @@ steps:
           --destination-port-range 80
 
   - task: AzureCLI@2
+    displayName: "Install Docker on CentOS VM"
     inputs:
       azureSubscription: "ServicePrincipalHotmail"
       scriptType: "bash"
