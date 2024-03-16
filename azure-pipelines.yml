@@ -38,8 +38,8 @@ steps:
       resourceGroupName: $(resourceGroupName)
       location: $(location)
       templateLocation: "URL of the file"
-      csmFileLink: "https://raw.githubusercontent.com/pedromonteiroleite/MasteringLinux/main/.azure/arm/vmCentOsFresh/template.json"
-      csmParametersFileLink: "https://raw.githubusercontent.com/pedromonteiroleite/MasteringLinux/main/.azure/arm/vmCentOsFresh/parameters.json"
+      csmFileLink: "https://raw.githubusercontent.com/pedromonteiroleite/MasteringLinux/main/.azure/vmCentOsFresh/template.json"
+      csmParametersFileLink: "https://raw.githubusercontent.com/pedromonteiroleite/MasteringLinux/main/.azure/vmCentOsFresh/parameters.json"
       deploymentMode: "Incremental"
       deploymentName: "DeployPipelineTemplate"
       overrideParameters: "-location $(location) -adminPassword $(adminPassword)"
