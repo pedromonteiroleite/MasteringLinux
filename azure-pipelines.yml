@@ -14,7 +14,7 @@ variables:
     value: "rgMasteringLinux"
   - name: location
     value: "northeurope"
-  - name: vmName
+  - name: virtualMachineName
     value: "vmCentOsFresh"
 
 steps:
@@ -45,7 +45,7 @@ steps:
       deploymentName: "DeployPipelineTemplate"
       overrideParameters: " -location $(location)
         -adminPassword $(adminPassword)
-        -vmName  $(vmName)"
+        -virtualMachineName  $(virtualMachineName)"
 
   - task: AzureCLI@2
     inputs:
