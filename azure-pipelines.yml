@@ -43,7 +43,9 @@ steps:
       csmParametersFileLink: "https://raw.githubusercontent.com/pedromonteiroleite/MasteringLinux/main/.azure/vmCentOsFresh/parameters.json"
       deploymentMode: "Incremental"
       deploymentName: "DeployPipelineTemplate"
-      overrideParameters: "-location $(location) -adminPassword $(adminPassword)"
+      overrideParameters: " -location $(location)
+        -adminPassword $(adminPassword)
+        -vmName  $(vmName)"
 
   - task: AzureCLI@2
     inputs:
