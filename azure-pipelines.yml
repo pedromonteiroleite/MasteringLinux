@@ -53,13 +53,13 @@ steps:
       scriptType: "bash"
       scriptLocation: "inlineScript"
       inlineScript: |
-        az vm extension set \ 
-        --publisher Microsoft.Azure.Extensions \  
-        --version 2.0 \ 
-        --name CustomScript \ 
-        --vm-name $(vmName) \ 
-        --resource-group $(resourceGroupName) \ 
-        --settings '{"commandToExecute":"sudo yum install -y yum-utils && \
-                          sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && \
-                          sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin && \
+        az vm extension set 
+        --publisher Microsoft.Azure.Extensions 
+        --version 2.0 
+        --name CustomScript 
+        --vm-name $(vmName)  
+        --resource-group $(resourceGroupName) 
+        --settings '{"commandToExecute":"sudo yum install -y yum-utils && 
+                          sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && 
+                          sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin && 
                           sudo systemctl start docker"}'
