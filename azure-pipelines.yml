@@ -16,6 +16,8 @@ variables:
     value: "northeurope"
   - name: virtualMachineName
     value: "vmCentOsFresh"
+  - name: networkSecurityGroupName
+    value: "vmCentOsFresh-nsg"
 
 steps:
   - script: |
@@ -46,6 +48,25 @@ steps:
       overrideParameters: " -location $(location)
         -adminPassword $(adminPassword)
         -virtualMachineName  $(virtualMachineName)"
+
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: "ServicePrincipalHotmail"
+      scriptType: "bash"
+      scriptLocation: "inlineScript"
+      inlineScript: |
+        az network nsg rule create \
+          --resource-group $(resourceGroupName) \
+          --nsg-name $(networkSecurityGroupName) \
+          --name AllowPort80 \
+          --access Allow \
+          --protocol Tcp \
+          --direction Inbound \
+          --priority 100 \
+          --source-address-prefix "*" \
+          --source-port-range "*" \
+          --destination-address-prefix "*" \
+          --destination-port-range 80
 
   - task: AzureCLI@2
     inputs:
