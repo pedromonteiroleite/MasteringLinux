@@ -11,6 +11,29 @@
       ENTRYPOINT ["dotnet", "WebAPI.dll"]
 
 - Add the inbound port 80 rule to VM if not yet added.
+
+### The inbound port rule task was automated via azure-pipelines.yml
+
+        - task: AzureCLI@2
+          displayName: "Open Inbound Rule on Port 80"
+          inputs:
+            azureSubscription: "ServicePrincipalHotmail"
+            scriptType: "bash"
+            scriptLocation: "inlineScript"
+            inlineScript: |
+              az network nsg rule create \
+                --resource-group $(resourceGroupName) \
+                --nsg-name $(networkSecurityGroupName) \
+                --name AllowPort80 \
+                --access Allow \
+                --protocol Tcp \
+                --direction Inbound \
+                --priority 100 \
+                --source-address-prefix "*" \
+                --source-port-range "*" \
+                --destination-address-prefix "*" \
+                --destination-port-range 80
+
 - Upload Dockerfile to publish folder (WinSCP)
 - Go to server and execute the commands (Putty)
 

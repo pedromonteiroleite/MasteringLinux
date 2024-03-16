@@ -1,4 +1,26 @@
-## Install Docker
+## The docker instalation task was automated via azure-pipelines.yml
+
+         - task: AzureCLI@2
+           displayName: "Install Docker on CentOS VM"
+           inputs:
+             azureSubscription: "ServicePrincipalHotmail"
+             scriptType: "bash"
+             scriptLocation: "inlineScript"
+             inlineScript: |
+               az vm extension set \
+                 --publisher Microsoft.Azure.Extensions \
+                 --version 2.0 \
+                 --name CustomScript \
+                 --vm-name $(virtualMachineName) \
+                 --resource-group $(resourceGroupName) \
+                 --settings '{
+                   "commandToExecute": "sudo yum install -y yum-utils && \
+                                        sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && \
+                                        sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin && \
+                                        sudo systemctl start docker"
+                 }'
+
+## Reference
 
 - SSH Connect
 - [Follow Docker instalation to CentOS using docker repository](https://docs.docker.com/engine/install/centos/)
