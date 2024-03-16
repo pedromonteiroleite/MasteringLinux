@@ -20,9 +20,13 @@ variables:
     value: "vmCentOsFresh-nsg"
 
 steps:
-  - script: |
-      echo $(resourceGroupName)
-      echo $(location)
+  - task: PowerShell@2
+    displayName: "Print Resource Group Name and Location"
+    inputs:
+      targetType: "inline"
+      script: |
+        Write-Output "$(resourceGroupName)"
+        Write-Output "$(location)"
 
   - task: AzureCLI@2
     displayName: "Create Resource Group"
