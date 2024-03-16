@@ -57,7 +57,7 @@ steps:
         --publisher Microsoft.Azure.Extensions 
         --version 2.0 
         --name CustomScript 
-        --vm-name $(vmName)  
+        --vm-name $(virtualMachineName)  
         --resource-group $(resourceGroupName) 
         --settings '{"commandToExecute":"sudo yum install -y yum-utils && 
                           sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && 
