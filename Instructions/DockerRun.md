@@ -2,7 +2,7 @@
 
 - Publish WebAPI (to folder)
 - Upload publish folder to VM
-- Create DockerFile
+- DockerFile:
 
       FROM mcr.microsoft.com/dotnet/aspnet:6.0
       WORKDIR /app
@@ -46,9 +46,9 @@
            --name webapi \
            webapi:latest
 
-- Run container
-
 - Test WebAPI
+
+      http://[IP]]:[PORT]]/[ENDPOINT]]
 
 ### Remarks:
 
